@@ -8,4 +8,4 @@ const alunos = [
 const resultado = alunos.map(a => a.nota).reduce(function(acumulador, atual) {
     console.log(acumulador, atual)
     return acumulador + atual
-}, 10)  //valor inicial sendo passado
+})  //valor inicial sendo passado
