@@ -12,7 +12,7 @@ function salvarProduto(produto) {
 }
 
 function getProduto(id) {
-    return produtos[id] || {} //obj > chave
+    return produtos[id] || {}
 }
 
 function getProdutos() {
