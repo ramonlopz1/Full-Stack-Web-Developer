@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios HTML</title>
+
+    <style>
+        #conteudo {
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Exercícios HTML
+    </header>
+    <nav>
+        <a href wm-nav="exercicios/teste.html">00 - Teste</a>
+        <a href wm-nav="exercicios/texto1.html">01 - Texto 1</a>
+        <a href wm-nav="exercicios/texto2.html">02 - Texto 2</a>
+        <a href wm-nav="exercicios/listas.html">03 - Listas</a>
+        <a href wm-nav="exercicios/listaAninhada.html">04 - Lista Aninhada</a>
+        <a href wm-nav="exercicios/links.html">05 - Links</a>
+        <a href wm-nav="exercicios/tabela.html">06 - Tabelas</a>
+    </nav>
+    <section id="conteudo">
+
+    </section>
+    <footer>
+        <br>
+        Curso de Web Moderno
+    </footer>
+
+    <script>
+        
+        document.querySelectorAll('[wm-nav]').forEach(link => { 
+
+            const conteudo = document.getElementById('conteudo')
+
+            // associa a cada um dos links uma função que será disparada após o click
+            link.onclick = function(e) { // e = é o evento que é recebido ao clicar
+                e.preventDefault() // cancela o comportamento padrão do evento
+                
+                fetch(link.getAttribute('wm-nav')) //fetch: faz uma requisição ajax em cima do atributo href, que retorna o link da página
+                    .then(resp => resp.text()) // retorna o conteúdo textual do html da página requisitada
+                    .then(html => conteudo.innerHTML = html) // joga o html retornado pelo resp.text, dentro do elemento conteudo
+            }
+        })
+    </script>
+</body>
+</html>
