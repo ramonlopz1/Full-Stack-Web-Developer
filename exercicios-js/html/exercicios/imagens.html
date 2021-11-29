@@ -1,0 +1,95 @@
+<div wm-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        alt="Muro da Cidade"
+        width="513" height="342"
+        title="Muro da Cidade por Tarcio">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        alt="Muro da Cidade"
+        width="513" height="342"
+        title="Muro da Cidade por Tarcio">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        alt="Muro da Cidade"
+        width="513" height="342"
+        title="Muro da Cidade por Tarcio">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        alt="Muro da Cidade"
+        width="513" height="342"
+        title="Muro da Cidade por Tarcio">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        alt="Muro da Cidade"
+        width="513" height="342"
+        title="Muro da Cidade por Tarcio">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        alt="Muro da Cidade"
+        width="513" height="342"
+        title="Muro da Cidade por Tarcio">
+    </p>
+    
+</div>
+
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+</style>
+
+<script>
+    function mover(elem, inicio, fim, passo, callback) {
+
+        const novoInicio = inicio - passo
+
+        // se não chegar ao fim:
+        if(novoInicio => fim) {
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        } else {
+            callback() // executa uma função quando chegar ao fim
+        }
+
+    }
+
+    function slider() {
+        const elementos = document.querySelectorAll('[wm-slider] > p') //queryselector retorna um nodelist
+        const slides = Array.from(elementos) //converte o nodelist em array
+        exibirSlides(slides, slides[0]) // passa o array de slides e o primeiro elemento do array
+    }
+
+    function exibirSlides(slides, slide) {
+        slide.style.display = 'block'
+
+        const  inicio = innerWidth // retorna a largura da tela | browser
+        const fim = -slide.clienteWidth // retorna a largura da tag, no caso a tag P
+
+        slide.style.left = `${inicio}px`
+
+
+        mover(slide, inicio, fim, 5, () => {  // quando o slide chegar no final, a callback será chamada, alterando o display para none, pois o slide já saiu da tela
+            slide.style.display = 'none'
+            exibirSlide(slides, getProximo(slides, slide))
+        })
+    }
+
+    function getProximo(lista, atual) {
+        const i = lista.indexOf(atual) + 1 // pegando o próximo slide
+        return i < lista.length ? lista[i] : lista[0]  // se o próximo for menor que o tamanho do array, retorne o próximo, senão retorne o primeiro array.
+    }
+
+    slider()
+</script>

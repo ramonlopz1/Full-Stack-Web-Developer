@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input:not([type=radio], [type=checkbox]), button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="http://localhost:3003/usuarios" method="POST">
+        <input type="text" name="nome">
+        <input type="password" name="senha">
+
+        <div>
+            <input type="radio" name="tipousuario" value="adm"> Administrador
+            <input type="radio" name="tipousuario" value="regular"> Regular
+        </div>
+
+        <div>
+            <input type="checkbox" name="ativo"> Ativo
+        </div>
+
+        <select name="genero">
+            <option value="">Gênero</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+        </select>
+
+        <button>Login</button>
+    </form>
+</body>
+</html>
