@@ -1,0 +1,65 @@
+#principal {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+#principal .curso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    box-shadow: 2px 2px 15px black;
+    margin: 0px 20px;
+    
+}
+
+.curso-info {
+    
+    font-family: sans-serif;
+    width: 230px;
+    margin-top: -20px;
+}
+
+.curso-info h4 {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.curso-info p {
+    margin-top: -10px;
+}
+
+.curso-preco {
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+    margin-left: 70px;
+
+}
+
+.curso-preco .preco-de {
+    font-family: sans-serif;
+    text-decoration: line-through;
+    color: red;
+}
+
+.curso-preco .preco-por {
+    font-family: sans-serif;
+    font-size: 25px;
+    margin-left: 5px;
+    font-weight: bold;
+    color: green;
+}
+
+.curso img[src="http://files.cod3r.com.br/curso-web/curso2.jpg"] {
+    height: 135px;
+    width: 240px;
+
+    order: 1;
+    align-self: center;
+    flex-grow: 3; /*preenche o espaço e aumenta*/
+    flex-shrink: 1; /*encolhe o elemento*/
+}
