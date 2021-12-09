@@ -1,0 +1,45 @@
+
+<style>
+    form {
+        color: white;
+        background-color: rgb(0, 145, 255);
+        border-radius: 6px;
+        padding: 13px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    input:not([type=radio]) {
+        margin: 10px 0px;
+        height: 30px;
+    }
+    
+
+    button {
+        color: black;
+        background-color: gold;
+        border: none;
+        border-radius: 6px;
+        margin-top: 10px;
+        padding: 8px 0px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: rgb(255, 227, 70);
+    }
+</style>
+
+<form>
+    <h1>Login</h1>
+    <input type="email" name="email" placeholder="E-mail">
+    <input type="pass" name="pass" placeholder="Password">
+
+    <div>
+        <input type="radio" name="typeuser" value="adm"> Administrador
+        <input type="radio" name="typeuser" value="regular"> Regular
+    </div>
+
+
+    <button formmethod="POST" formaction="">Login</button>
+</form>

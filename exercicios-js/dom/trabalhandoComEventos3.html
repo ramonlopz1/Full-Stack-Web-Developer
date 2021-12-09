@@ -1,0 +1,77 @@
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #03</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+        }
+        
+        .esquerda {
+            height: 100vh;
+            width: 50%;
+            background-color: coral;
+        }
+        
+        .direita {
+            height: 100vh;
+            width: 50%;
+            background-color: cornflowerblue;
+        }
+        
+        .item {
+            border: solid 5px black;
+            background-color: darkgrey;
+            color: white;
+            height: 100px;
+            font-size: 40px;
+            margin: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="esquerda" wm-dropzone>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+    <div class="direita" wm-dropzone></div>
+    <script>
+
+        const items = document.querySelectorAll('[wm-dropzone] .item')
+        items.forEach((item, index) => {
+
+            // coloca a tag draggable com o valor true nos parâmetros da div, coloca o id="draggable-item-1, 2, 3..."
+            item.draggable = true
+            item.id = item.id || `draggable-item-${index}`
+
+            item.ondragstart = e => { //ondragstart: quando começar a arrastar
+                e.dataTransfer.setData('item-id', e.target.id)
+            }
+        })
+
+
+
+        const dropzones = document.querySelectorAll('[wm-dropzone]') //dropzone é a div
+        
+        dropzones.forEach(dropzone => {
+            dropzone.ondragover = e => e.preventDefault()  // ondragover: quando terminar de arrastar
+
+            dropzone.ondrop = e => {
+                const id = e.dataTransfer.getData('item-id') // pega o elemento pelo ID criado anteriormente
+                const item = document.getElementById(id)
+                e.target.appendChild(item)  // e.target é o elemento onde o item foi solto
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=a, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .destaque {
+            background-color: blue;
+        }
+
+        header, main, aside, footer {
+            border: 1px solid purple;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header {
+            color: white;
+            background-color: darkblue;
+            grid-area: header;
+        }
+
+        nav {
+            background-color: rgb(0, 119, 255);
+            grid-area: nav;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            nav ul {
+                
+                display: flex;
+                flex-direction: row;
+                list-style: none;
+                width: 100%;
+            }
+
+                nav ul li {
+                    margin: 0px 7px;
+                }
+
+                    nav ul li a {
+                        text-decoration: none;
+                    }
+
+            nav #menu {
+                padding: 15px;
+                display: flex;
+                justify-content: flex-start;
+            }
+
+            nav #acess {
+                padding: 15px;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            nav #acess li:nth-of-type(1) a { 
+                color: white;    
+                padding: 7px 11px;
+                border: 1px solid rgba(255, 255, 255, 0.426);
+                border-radius: 8px 0px 0px 8px;
+            }
+
+            nav #acess li:nth-of-type(1) a:hover {
+                background-color: rgb(0, 81, 255);
+            }
+
+            nav #acess li:nth-of-type(2) a {
+                color: black;
+                padding: 7px 11px;
+                border-radius: 0px 8px 8px 0px;
+                background-color: gold;
+            }
+
+            nav #acess li:nth-of-type(2) a:hover {
+                background-color: rgb(255, 227, 70);
+            }
+
+        main {
+            grid-area: main;
+        }
+
+        aside {
+            grid-area: aside;
+            padding: 25px;
+        }
+
+        footer {
+            grid-area: footer;
+        }
+
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            display: grid;
+            height: 100vh;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 70px 50px 450px 80px;
+            grid-template-areas: 
+            'header header'
+            'nav nav'
+            'aside main'
+            'footer footer';
+        }
+    </style>
+</head>
+<body>
+    <header>HEADER</header>
+    <nav>
+        <ul id="menu">
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="">Contato</a></li>
+        </ul>
+
+        <ul id="acess">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="section">
+
+        </section>
+    </main>
+
+    <aside id="aside">
+        <section id="section2">
+
+        </section>
+    </aside>
+
+    <footer>FOOTER</footer>
+    
+
+    <script>
+         ////
+        const header = document.querySelector('header')
+
+        header.onclick = () => {
+            header.classList.toggle('destaque')
+
+            if(header.classList.contains('destaque')) {
+                header.innerHTML = 'COR DESTACADA'
+            } else {
+                header.innerHTML = 'COR PADRÃO'
+            }
+        }
+        
+        document.querySelectorAll('#menu a').forEach(link => {
+
+            const section2 = document.getElementById('section2')
+
+            link.onclick = e => {
+
+                e.preventDefault()
+                fetch(link.href)
+                    .then(text => text.text())
+                    .then(returned => section2.innerHTML = returned)
+            }
+        })
+
+        ////
+        document.querySelectorAll('#acess a').forEach(link => {
+
+            const section = document.getElementById('section')
+
+            link.onclick = e => {
+
+                e.preventDefault()
+                fetch(link.href)
+                    .then(text => text.text())
+                    .then(returned => section.innerHTML = returned)
+            }
+        })
+       
+
+    </script>
+</body>
+</html>

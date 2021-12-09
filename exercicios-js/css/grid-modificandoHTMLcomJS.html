@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .destaque {
+            background: darkslategray;
+        }
+
+        .mainRed {
+            background-color: red;
+        }
+
+        .asideGreen {
+            background-color: green;
+        }
+
+        header, nav, main, aside, article, footer {
+            display: flex;
+            justify-content: center;
+        }
+
+        header {
+            background: blue;
+            grid-area: cabecalho;
+        }
+
+        nav {
+            background: blueviolet;
+            grid-area: navegacao;
+        }
+
+        nav ul {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: stretch;
+            list-style: none;
+        }
+
+        nav li {
+            height: 100%;
+            background-color: navajowhite;
+        }
+
+        nav li:hover {
+            background-color: yellow;
+        }
+
+        main {
+            background: cornflowerblue;
+            grid-area: main;
+        }
+
+        
+        aside {
+            background: cyan;
+            grid-area: aside;
+        }
+
+        article {
+            background: deeppink;
+            grid-area: article;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        article div {
+            margin: 0;
+            width: 33.3%;
+        }
+
+        article div:nth-of-type(1) {
+            background: forestgreen;
+        }
+        article div:nth-of-type(2) {
+            background: green;
+        }
+
+        article div:nth-of-type(3) {
+            background: darkgreen;
+        }
+
+        footer {
+            background: red;
+            grid-area: rodape;
+        }
+
+        body {
+            margin: 0;
+            display: grid;
+            min-height: 100vh;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 80px 50px 350px 500px 70px;
+            grid-template-areas: 
+            'cabecalho cabecalho cabecalho'
+            'navegacao navegacao navegacao'
+            'main main aside'
+            'article article article'
+            'rodape rodape rodape';
+        }
+
+        @media (max-width: 760px) {
+            
+            body {
+                grid-template-columns: 1fr;
+                grid-template-rows: 80px 50px 350px 400px 900px 70px;
+                grid-template-areas: 
+                'cabecalho'
+                'navegacao'
+                'main'
+                'aside'
+                'article'
+                'rodape';
+            }
+
+            article {
+                flex-direction: column;
+            }
+
+            article div {
+                height: 33.3%;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header meuAtributo="opa" data-atributoDiferenciado="valordele">
+        HEADER
+    </header>
+    <nav>
+        <ul>
+            <li>MAIN</li>
+            <li>ASIDE</li>
+            <li>CONHEÇA</li>
+            <li>CONTATO</li>
+        </ul>
+    </nav>
+    <main id="main">MAIN</main>
+    <aside id="aside" >ASIDE</aside>
+    <article>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </article>
+    <footer>FOOTER</footer>
+    <script>
+        document.querySelectorAll('header').forEach(retorno => {
+
+            retorno.onclick = () => {
+
+                retorno.classList.toggle('destaque')
+                if(retorno.classList.contains('destaque')) {
+                    retorno.innerHTML = 'ALTERADO   '
+                } else {
+                    retorno.innerHTML = 'HEADER'
+                }
+
+                retorno.setAttribute('novoAtributo', 'valor') // adiciona atributo
+                retorno.dataset.atributodiferenciado="passandoValor" // notação ponto com dataset
+                console.log(retorno.getAttribute('meuAtributo')) // pega o atributo
+            }
+        })
+
+        document.querySelectorAll('nav ul li:nth-of-type(1)').forEach(returned => {
+
+            const main = document.getElementById('main')
+
+            returned.onclick = () => {
+                main.classList.toggle('mainRed')
+            }
+        })
+
+        document.querySelectorAll('nav ul li:nth-of-type(2)').forEach(returnedValue => {
+            const aside = document.getElementById('aside')
+
+            returnedValue.onclick = () => {
+                aside.classList.toggle('asideGreen')
+            }
+        })
+
+        
+      
+    </script>
+</body>
+</html>

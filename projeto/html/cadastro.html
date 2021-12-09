@@ -1,0 +1,57 @@
+
+<style>
+    form {
+        color: white;
+        background-color: rgb(0, 145, 255);
+        border-radius: 6px;
+        padding: 13px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    input:not([type=radio]) {
+        margin: 10px 0px;
+        height: 30px;
+    }
+    
+    select {
+        margin-top: 10px;
+        width: 100px;
+        border: none;
+        border-radius: 3px;
+    }
+
+    
+
+    button {
+        color: black;
+        background-color: gold;
+        border: none;
+        border-radius: 6px;
+        margin-top: 10px;
+        padding: 8px 0px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: rgb(255, 227, 70);
+    }
+</style>
+
+<form>
+    <h1>Cadastro</h1>
+    <input type="email" name="email" placeholder="E-mail">
+    <input type="password" name="pass" placeholder="Password">
+    <input type="password" name="passConfirm" placeholder="Confirm Password">
+    <div>
+        <input type="radio" name="typeuser" value="adm"> Administrador
+        <input type="radio" name="typeuser" value="regular"> Regular
+    </div>
+    <select name="genre">
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+    </select>
+
+    <button formmethod="POST" formaction="http://localhost:3003/users">Cadastrar</button>
+</form>
