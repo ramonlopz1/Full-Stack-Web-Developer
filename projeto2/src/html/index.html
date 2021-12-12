@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="../../media/logo.png" alt="logoinicio-agrestech" height="45px">
+        </div>
+
+        <div id="infos">
+            <div>
+                <span style="font-weight: bold;">Contato:</span>
+                <p>Tel: (87) 9 9909-0918</p>
+                <p>Tel2: (87) 9 9130-9869</p>
+            </div>
+            <div>
+                <span style="font-weight: bold;">Endereço:</span>
+                <p>Rua Boa Esperança, 35</p>
+                <p>Centro, Pesqueira</p>
+            </div>
+        </div>
+
+        
+
+        <div id="socialmedias">
+            <a href=""><i class="fab fa-linkedin"></i></a>
+            <a href=""><i class="fab fa-github-square"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Info</a></li>
+        </ul>
+
+        <ul>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Home</h1>
+        <section>
+            <div>
+                <h2>Security</h2>
+                <i class="fas fa-user-shield"></i>
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing el</span>
+                <i class="fas fa-sign-in-alt"></i>
+            </div>
+
+            <div>
+                <h2>Agility</h2>
+                <i class="fas fa-network-wired"></i>
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing el</span>
+                <i class="fas fa-sign-in-alt"></i>
+            </div>
+            
+            <div>
+                <h2>Quality</h2>
+                <i class="fas fa-dice-d20"></i>
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing el</span>
+                <i class="fas fa-sign-in-alt"></i>
+            </div>
+        </section>
+    </main>
+    <aside id="aside">
+        <div id="conteudo">
+            <h1>Conecte</h1>
+            Faça <span style="color: white;"> login </span> ou realize o seu <span style="color: white;"> cadastro </span> </br> para uma melhor experiência
+            
+        </div>
+        <div>
+            <a href="login.html">Log In</a>
+            <a href="signup.html">Sign Up</a>
+        </div>
+    </aside>
+    <footer>Agrestech Serviços @ All rights reserved 2021.</footer>
+
+    <script>
+        document.querySelectorAll('nav ul:nth-of-type(2) a, #aside a').forEach(link => {
+            const aside = document.getElementById('aside')
+
+            link.onclick = e => {
+                e.preventDefault()
+
+                fetch(link.href)
+                    .then(text => text.text())
+                    .then(content => aside.innerHTML = content)
+            }
+        })
+    </script>
+</body>
+</html>
