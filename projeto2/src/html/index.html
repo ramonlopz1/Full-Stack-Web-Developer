@@ -48,26 +48,26 @@
     </nav>
     <main>
         <h1>Home</h1>
-        <section>
-            <div>
+        <section id="mainSection">
+            <div id="securityCard" c1> 
                 <h2>Security</h2>
                 <i class="fas fa-user-shield"></i>
                 <span>Lorem ipsum, dolor sit amet consectetur adipisicing el</span>
-                <i class="fas fa-sign-in-alt"></i>
+                <a href=""><i class="fas fa-sign-in-alt"></i></a>
             </div>
 
-            <div>
+            <div id="agilityCard" c2>
                 <h2>Agility</h2>
                 <i class="fas fa-network-wired"></i>
                 <span>Lorem ipsum, dolor sit amet consectetur adipisicing el</span>
-                <i class="fas fa-sign-in-alt"></i>
+                <a href=""><i class="fas fa-sign-in-alt"></i></a>
             </div>
             
-            <div>
+            <div id="qualityCard" c3>
                 <h2>Quality</h2>
                 <i class="fas fa-dice-d20"></i>
                 <span>Lorem ipsum, dolor sit amet consectetur adipisicing el</span>
-                <i class="fas fa-sign-in-alt"></i>
+                <a href=""><i class="fas fa-sign-in-alt"></i></a>
             </div>
         </section>
     </main>
@@ -84,18 +84,6 @@
     </aside>
     <footer>Agrestech Serviços @ All rights reserved 2021.</footer>
 
-    <script>
-        document.querySelectorAll('nav ul:nth-of-type(2) a, #aside a').forEach(link => {
-            const aside = document.getElementById('aside')
-
-            link.onclick = e => {
-                e.preventDefault()
-
-                fetch(link.href)
-                    .then(text => text.text())
-                    .then(content => aside.innerHTML = content)
-            }
-        })
-    </script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
