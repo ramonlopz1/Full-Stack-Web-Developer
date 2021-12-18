@@ -1,3 +1,8 @@
+
+
+
+
+
 document.querySelectorAll('nav ul:nth-of-type(2) a, #aside a').forEach(link => {
     const aside = document.getElementById('aside')
 
@@ -22,13 +27,14 @@ document.querySelectorAll('main section div a').forEach(valor => {
     const array = []
     let contador = 0
 
-
+    
     
     console.log(valor)
     
     valor.onclick = (e) => {
         e.preventDefault()
 
+        textDiv.setAttribute('data-aos', 'slide-right')
         
         array.push(contador++)
         
@@ -69,10 +75,13 @@ document.querySelectorAll('main section div a').forEach(valor => {
             valor.style.transform = 'rotate(180deg)'
 
         } else if (array.length = 1) {
+            
+
             agilityCard.style.display = 'flex'
             qualityCard.style.display = 'flex'
             securityCard.style.display = 'flex'
 
+           
             mainSection.removeChild(textDiv)
             array.pop()
             valor.style.transform = 'rotate(360deg)'
@@ -82,4 +91,17 @@ document.querySelectorAll('main section div a').forEach(valor => {
     
     
     
+})
+
+
+document.querySelectorAll('nav ul:nth-of-type(1) li:nth-of-type(2) a').forEach(link => {
+    const main = document.querySelectorAll('main')
+    const mainSection = document.querySelectorAll('#mainSection')
+
+
+    link.onclick = e => {
+        e.preventDefault()
+        this.mainSection.style.display = 'none'
+        
+    }
 })
