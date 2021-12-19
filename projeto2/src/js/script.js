@@ -29,7 +29,7 @@ document.querySelectorAll('main section div a').forEach(valor => {
 
     
     
-    console.log(valor)
+    
     
     valor.onclick = (e) => {
         e.preventDefault()
@@ -66,9 +66,7 @@ document.querySelectorAll('main section div a').forEach(valor => {
                 <h3>Design, regras de negócio, relações de dados e muito mais para você.</p>`
             }
 
-            
                
-            
 
             mainSection.appendChild(textDiv)
 
@@ -105,3 +103,28 @@ document.querySelectorAll('nav ul:nth-of-type(1) li:nth-of-type(2) a').forEach(l
         
     }
 })
+
+//////
+const nav = document.getElementById('nav')
+const hambur = document.createElement('button')
+
+hambur.innerHTML = "="
+nav.appendChild(hambur)
+const ul = document.querySelectorAll('#nav ul')
+
+
+hambur.onclick = () => {
+    
+    nav.classList.toggle('menuDown')
+
+    if(nav.classList.contains('menuDown')) {
+        ul.forEach(valor => {
+            valor.style.display = "flex"
+        })
+    } else {
+        ul.forEach(valor => {
+            valor.style.display = "none"
+        })
+    }
+
+}
