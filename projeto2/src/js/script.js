@@ -1,7 +1,4 @@
-
-
-
-
+// fetch para substituir conteúdo de alguma div por documento HTML
 
 document.querySelectorAll('nav ul:nth-of-type(2) a, #aside a').forEach(link => {
     const aside = document.getElementById('aside')
@@ -26,11 +23,7 @@ document.querySelectorAll('main section div a').forEach(valor => {
     const textDiv = document.createElement('div') 
     const array = []
     let contador = 0
-
-    
-    
-    
-    
+ 
     valor.onclick = (e) => {
         e.preventDefault()
 
@@ -65,30 +58,22 @@ document.querySelectorAll('main section div a').forEach(valor => {
                 `<h1>Qualidade para o seu negócio</h1>
                 <h3>Design, regras de negócio, relações de dados e muito mais para você.</p>`
             }
-
-               
-
+              
             mainSection.appendChild(textDiv)
 
             valor.style.transform = 'rotate(180deg)'
 
         } else if (array.length = 1) {
             
-
             agilityCard.style.display = 'flex'
             qualityCard.style.display = 'flex'
             securityCard.style.display = 'flex'
-
-           
+       
             mainSection.removeChild(textDiv)
             array.pop()
             valor.style.transform = 'rotate(360deg)'
-        }
-        
-    }
-    
-    
-    
+        }    
+    } 
 })
 
 
@@ -96,11 +81,9 @@ document.querySelectorAll('nav ul:nth-of-type(1) li:nth-of-type(2) a').forEach(l
     const main = document.querySelectorAll('main')
     const mainSection = document.querySelectorAll('#mainSection')
 
-
     link.onclick = e => {
         e.preventDefault()
-        this.mainSection.style.display = 'none'
-        
+        this.mainSection.style.display = 'none'      
     }
 })
 
@@ -111,7 +94,6 @@ const hambur = document.createElement('button')
 hambur.innerHTML = "="
 nav.appendChild(hambur)
 const ul = document.querySelectorAll('#nav ul')
-
 
 hambur.onclick = () => {
     
@@ -126,5 +108,4 @@ hambur.onclick = () => {
             valor.style.display = "none"
         })
     }
-
 }
