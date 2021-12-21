@@ -11,6 +11,14 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        const xhr = XMLHttpRequest()
+        xhr.open(config.metodo, config.url, true)
+        xhr.onreadystatechange = e => {
+            if (xhr.readyState === 4) {
+                if(xhr.status === 200) {
+                    config.sucesso(xhr.responseXML)
+                }
+            }
+        }
     </script>
 </body>

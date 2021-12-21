@@ -29,6 +29,9 @@
         }
 
         function criarTabela(estados) {
+            
+            const tabela = document.createElement('table')
+
             const linhas = estados.map(estado => { // cria um array com várias linhas preenchidas com as células criadas abaixo
 
                 const tdId = document.createElement('td') // cria célula de tabela
@@ -48,7 +51,7 @@
                 return tr
             })
 
-            const tabela = document.createElement('table')
+            
 
             linhas.forEach(valor => tabela.appendChild(valor)) // coloca cada linha dentro da tabela
             document.body.appendChild(tabela)
