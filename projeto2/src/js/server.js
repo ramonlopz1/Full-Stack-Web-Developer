@@ -1,10 +1,38 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const db = require('./dataBase')
+const multer = require('multer')
 const port = 3003
 const app = express()
 
+app.use(express.static('.'))
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+
+// armazenamento
+const storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, './uploads')
+    },
+    filename: function(req, file, callback) {
+        //callback(null, `imagem.${file.originalname.split(".")[1]}`)
+        callback(null, `${Date.now}_${file.originalname}`)
+    }
+})
+
+const upload = multer({ storage }).single('arquivo')
+
+app.post('/uploads', (req, res) => {
+    upload(req, res, err => {
+        if(err) {
+            return res.end('Ocorreu um erro')
+        }
+
+        res.end('Concluído')
+    })
+})
+
 
 app.post('/users', (req, res) => {
     const user = db.newUser({
