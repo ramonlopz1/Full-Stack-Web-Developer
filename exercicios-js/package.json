@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "gulp": "^4.0.2",
     "lodash": "^4.17.21",
     "node-schedule": "^2.0.0"
   }
