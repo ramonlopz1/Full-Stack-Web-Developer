@@ -1,15 +1,13 @@
 {
-  "name": "gulp",
+  "name": "javascript",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Cod3r",
-  "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "6.26.3",
     "babel-preset-env": "1.6.1",
     "gulp-babel": "7.0.1",
@@ -19,5 +17,7 @@
     "gulp-uglify": "3.0.0",
     "gulp-uglifycss": "1.0.9",
     "typescript": "2.8.3"
-  }
+  },
+  "author": "",
+  "license": "ISC"
 }
