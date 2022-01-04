@@ -1,26 +1,21 @@
-const { series } = require('gulp');
-const gulp = require('gulp');
-const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const babel = require('gulp-babel');
- 
+const { series } = require('gulp')
+const gulp = require('gulp')
+const concat = require('gulp-concat')
+const uglify = require('gulp-uglify')
+const babel = require('gulp-babel')
+
 function transformacaoJS(cb) {
-  gulp
-    .src('src/**/*.js')
-    .pipe(
-      babel({
-        comments: false,
-        presets: ['env'] // pega tudo que estiver de mais moderno no código para converter para um mais antigo se necessário
-      }))
-    .pipe(uglify())
-    .on('error', (err) => console.log(err))
-    .pipe(concat('codigo.min.js'))
-    .pipe(gulp.dest('build'));
-  return cb();
+    return gulp.src('src/**/*.js')
+        .pipe(babel())
+        .pipe(uglify())
+        .on('error', err => console.log(err))
+        .pipe(concat('codigo.min.js'))
+        .pipe(gulp.dest('build'))
 }
- 
+
 function fim(cb) {
-  console.log('Fim!!');
-  return cb();
+    console.log('Fim!!!')
+    return cb()
 }
-exports.default = series(transformacaoJS, fim);
+
+module.exports.default = series(transformacaoJS, fim)
