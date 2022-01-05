@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const db = require('./dataBase')
+const db = require('./src/js/dataBase')
 const multer = require('multer')
 const port = 3003
 const app = express()
@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }).single('arquivo')
 
-app.post('/uploads', (req, res) => {
+app.post('/upload', (req, res) => {
     upload(req, res, err => {
         if(err) {
             return res.end('Ocorreu um erro')
@@ -33,6 +33,9 @@ app.post('/uploads', (req, res) => {
     })
 })
 
+app.post('', (req, res) => {
+    res.render('index.html')
+})
 
 app.post('/users', (req, res) => {
     const user = db.newUser({

@@ -1,0 +1,10 @@
+@import 'variaveis.scss';
+
+article {
+    font-family: $fontePadrao;
+}
+
+button {
+    background-color: $corBotao;
+    border-radius: $bordaPadrao;
+}

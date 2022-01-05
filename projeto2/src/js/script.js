@@ -29,9 +29,12 @@ document.querySelectorAll('main section div a').forEach(valor => {
 
         textDiv.setAttribute('data-aos', 'slide-right')
         
-        array.push(contador++)
         
-        if (array.length <= 1) {
+        
+        if (array.length <= 0) {
+
+            array.push(contador++)
+
             textDiv.className = 'textDiv'
 
             if (valor.hasAttribute('c1')) {
