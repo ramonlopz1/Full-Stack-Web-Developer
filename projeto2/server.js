@@ -1,8 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const db = require('./src/js/dataBase')
+const db = require('./dataBase.min.js')
 const multer = require('multer')
-const port = 3003
+
+const port = 8080
 const app = express()
 
 app.use(express.static('.'))
@@ -10,18 +11,20 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
-// armazenamento
-const storage = multer.diskStorage({
-    destination: function(req, file, callback) {
-        callback(null, './uploads')
+const storage = multer.diskStorage({ // 
+    destination: function (req, file, callback) {
+        callback(null, './upload') // pasta de destino que o arquivo será armazenado
     },
-    filename: function(req, file, callback) {
-        //callback(null, `imagem.${file.originalname.split(".")[1]}`)
-        callback(null, `${Date.now}_${file.originalname}`)
+
+    filename: function(req, file, callback) { // define o nome do arquivo
+        // callback(null, `${Date.now()}_${file.originalname}`)
+        callback(null, `imagem.${file.originalname.split(".")[1]}`)
+        
     }
+
 })
 
-const upload = multer({ storage }).single('arquivo')
+const upload = multer({ storage }).single('arquivo') //recebe objeto storage criado anteriormente com o destino e nome do arquivo, o 'arquivo' referencia o name do input do formulário
 
 app.post('/upload', (req, res) => {
     upload(req, res, err => {
@@ -29,12 +32,8 @@ app.post('/upload', (req, res) => {
             return res.end('Ocorreu um erro')
         }
 
-        res.end('Concluído')
+        res.end('Concluindo com sucesso.')
     })
-})
-
-app.post('', (req, res) => {
-    res.render('index.html')
 })
 
 app.post('/users', (req, res) => {

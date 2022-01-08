@@ -13,7 +13,7 @@ function servidor(cb) {
 
 function monitorarArquivos(cb) {
     watch('src/**/*.html', () => gulp.series('appHTML')()) // sempre que alterar o html chamará a função appHTML
-    watch('src/**/*.cs', () => gulp.series('appCSS')())
+    watch('src/**/*.css', () => gulp.series('appCSS')())
     watch('src/**/*.js', () => gulp.series('appJS')())
     watch('src/assets/imgs/**/*.*', () => gulp.series('appIMG')())
     return cb()
