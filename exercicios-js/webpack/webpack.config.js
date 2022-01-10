@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-    mode: 'development',
+    mode: 'development', //ou production: ja minifica o código, melhorandoo para deployment
     entry: './src/principal.js',
     output: {
         filename: 'principal.js',
