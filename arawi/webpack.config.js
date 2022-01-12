@@ -10,8 +10,9 @@ const path = require('path')
 module.exports = {
     mode: modoDev ? 'development' : 'production',
     entry: "./src/main.js",
+
     output: {
-        filename: 'main.js',
+        filename: 'assets/js/main.js',
         path: __dirname + '/public'
     },
 
@@ -21,8 +22,7 @@ module.exports = {
             use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
         }, {
             test: /\.(png|svg|jpg|gif)$/i,
-            type:"asset/resource",
-            use: ['file-loader']
+            use: ['file-loader'],
         }, {
             test: /\.html$/i,
             type: "asset/resource"
@@ -44,7 +44,7 @@ module.exports = {
 
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "style.css"
+            filename: "assets/css/style.css"
         }),
 
         new CopyPlugin({
