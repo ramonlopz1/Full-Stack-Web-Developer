@@ -16,5 +16,23 @@
 
     <script>
         $('#conteudo1').append('<p>1</p>')
+
+        const elementos = [
+            $('<li>').append('Arroz'),
+            $('<li>').append('Feijao'),
+            $('<li>').append('Carnes'),
+        ]
+
+        const lista = $('<ul><li>Sorverte</li></ul>').prepend(elementos)
+        $('#conteudo2').append(lista)
+
+
+        $('#conteudo3').append('<h1>1</h1>', '<h1>2</h1>')
+                .prepend('<h1>0</h1>')
+            
+        $('#conteudo1').html('<h1>Oi</h1>') //substitui o html
+
+        // $('div[id]').html('<strong>Todos!</strong>') seleciona todas as div que tem o atributo id
+
     </script>
 </body>
