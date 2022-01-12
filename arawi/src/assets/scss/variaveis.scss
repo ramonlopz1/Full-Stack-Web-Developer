@@ -2,23 +2,24 @@
 
 
 
-
+$logoColor: #cde8dc;
+$color0: #D3F2E2;
 $color1: #A5F0C0;
-$color2: #D3F2E2;
-$color3: #93F0AE;
-$color4: #60C068;
-$color5: #734F24;
+$color2: #5dd07e;
+$color3: #60C068;
+$color4: #734F24;
 
 $font1: 'Roboto';
 $paddingPadrao: '15px', 'sans-serif';
 
 * {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: $font1;
     text-decoration: none;
 }
 
-header, nav, section, main, footer {
+main, footer {
     border: solid 2px black;
 }

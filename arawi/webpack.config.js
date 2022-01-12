@@ -9,7 +9,7 @@ const path = require('path')
 
 module.exports = {
     mode: modoDev ? 'development' : 'production',
-    entry: "./src/main.js",
+    entry: ["./src/main.js", "./src/assets/js/jquery/jquery.js"],
 
     output: {
         filename: 'assets/js/main.js',

@@ -1,0 +1,1 @@
+(()=>{var r={507:()=>{let r=68;setInterval((()=>{$("#section-translate").css("background-color",`#60C0${r}`),r+=10}),2e3),$("#section-translate").css("background-color","#A5F0C0")},892:(r,t,e)=>{"use strict";e(507)}},t={};function e(s){var o=t[s];if(void 0!==o)return o.exports;var n=t[s]={exports:{}};return r[s](n,n.exports,e),n.exports}e(892);e(507)})();

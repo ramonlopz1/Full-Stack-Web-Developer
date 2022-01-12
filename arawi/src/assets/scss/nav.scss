@@ -1,6 +1,9 @@
 @import 'variaveis';
 
 nav {
+    z-index: 10;
+    background-color: #a5f0c09e;
+    border-top: 1px $color2 solid;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +11,19 @@ nav {
     ul {
         display: inherit;
         list-style: none;
-        gap: 25px;
+        gap: 20px;
 
+        a {
+            color: black;
+            font-weight: bold;
+            background-color: #a1ffa94f;
+            padding: 14px 10px 14px 10px;
+
+            &:hover {
+            background-color: $color3
+            }
+        }
+
+        
     }
 }
