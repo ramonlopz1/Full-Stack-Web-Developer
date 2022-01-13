@@ -1,0 +1,20 @@
+@import 'variaveis';
+
+#section-reserva {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+        form {          
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            
+            input, select {
+                margin: 0px 15px;
+            }
+        }
+}
+

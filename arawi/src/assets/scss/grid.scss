@@ -6,8 +6,12 @@ nav {
     grid-area: nav;
 }
 
-section {
-    grid-area: section;
+#section-translate {
+    grid-area: section-translate;
+}
+
+#section-reserva {
+    grid-area: section-reserva;
 }
 
 main {
@@ -26,11 +30,12 @@ body {
     display: grid;
     min-height: 100vh;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 100px 50px 500px 600px 70px;
+    grid-template-rows: 100px 50px 500px 170px 600px 70px;
     grid-template-areas: 
     'header header'
     'nav nav'
-    'section section'
+    'section-translate section-translate'
+    'section-reserva section-reserva'
     'main aside'
     'footer footer';
 }
@@ -38,11 +43,12 @@ body {
 @media (max-width: 760px) {
     body {
         grid-template-columns: 1fr;
-        grid-template-rows: 100px 50px 500px 700px 500px 70px;
+        grid-template-rows: 100px 50px 500px 170px 700px 500px 70px;
         grid-template-areas:
         'header'
         'nav'
-        'section'
+        'section-translate'
+        'section-reserva'
         'main'
         'aside'
         'footer';
