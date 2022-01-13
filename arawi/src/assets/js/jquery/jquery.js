@@ -6,16 +6,10 @@
     const h1 = document.createElement('h1')
     const span = document.createElement('span')
     const radio = document.querySelectorAll('#section-translate input[type=radio]')
-    
 
     $('#section-translate').css('background-image', `url(assets/images/section-translate/${contador}.jpg)`)
     $('#section-translate').prepend(h1)
     $('#section-translate').prepend(span)
-    
-
-    
-
-    
 
     setInterval(() => {
         radio.forEach((retorno, indice) => {
@@ -33,10 +27,6 @@
         contador++;
         contador >= 3 ? contador = 0 : contador
     }, 4000)
-
-    
-    
-
 })()
 
 

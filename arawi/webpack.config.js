@@ -4,6 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+
 const modoDev = process.env.NODE_ENV !== 'production';
 const path = require('path')
 
@@ -17,16 +18,18 @@ module.exports = {
     },
 
     module: {
-        rules: [{
-            test: /\.s?[ac]ss$/,
+        rules: [
+            {
+            test: /\.s?[ac]ss$/,  //scss, sass e css
             use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-        }, {
-            test: /\.(png|svg|jpg|gif)$/i,
-            use: ['file-loader'],
-        }, {
-            test: /\.html$/i,
-            type: "asset/resource"
-        }]
+            }, {
+                test: /\.(png|svg|jpg|gif)$/i, //files img
+                use: ['file-loader'],
+            }, {
+                test: /\.html$/i, //html
+                type: "asset/resource"
+            }
+        ]
     },
 
     optimization: {
