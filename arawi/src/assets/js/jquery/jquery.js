@@ -18,8 +18,8 @@
     //
 
     // Change radios with click and index position    
-    radio.forEach((retorno, indice) => {
-        retorno.onclick = () => {
+    radio.forEach((each, indice) => {
+        each.onclick = () => {
             $('#section-translate').css('background-image', `url(assets/images/section-translate/${indice}.jpg)`)
             h1.innerHTML = h1Array[indice]
             span.innerHTML = spanArray[indice]
