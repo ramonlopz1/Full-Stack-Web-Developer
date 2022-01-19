@@ -61,25 +61,25 @@
     <section id="section-reserva">
         <div>Reserve:</div>
         <form>
-            <input type="date" name="" id="" placeholder="Checkin">
-            <input type="date" name="" id="">
-            <select name="" id="">
+            <input type="date" name="checkin" placeholder="Checkin">
+            <input type="date" name="checkout">
+            <select name="adults">
                 <option>Adultos</option>
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
             </select>
-            <select name="" id="">
+            <select name="children">
                 <option>Crianças</option>
-                <option value="">0</option>
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
             </select>
 
-            <input type="submit" value="Consultar">
+            <input formaction="/newreservation" formmethod="POST" type="submit" value="Consultar">
         </form>
 
     </section>
