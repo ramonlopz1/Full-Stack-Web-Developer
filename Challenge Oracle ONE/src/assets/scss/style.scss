@@ -1,33 +1,51 @@
 @import 'variaveis';
 
 body {
+    height: 100vh;
     font-family: sans-serif;
     box-sizing: border-box;
-    padding: 0;
+    background-image: linear-gradient(180deg, black, $color4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
     margin: 0;
-    background-color: $color4;
+    padding: 0;
+}
+
+canvas {
+    position: absolute;
+    
 }
 
 section {
-    background-color: $color3;
+    background-image: linear-gradient(180deg, black, #2c1244);
+    border-radius: 0px 0px 9px 9px;
+    box-shadow: 0px 0px 20px 4px #80008085;
+    border: 1px solid purple;
 
     height: 700px;
     width: 600px;
-    margin: auto;
+    padding: 20px;
+    z-index: 100000;
+    position: relative;
 
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
 
+    
 
     h1 {
         color: white;
-        font-size: 35px;
+        font-size: 30px;
     }
 
     #card1, #card2 {
-        background-color: $color2;
+        background-color: $color0;
         
         height: 200px;
         width: 400px;
@@ -38,14 +56,14 @@ section {
         justify-content: space-evenly;
         flex-direction: column;
 
-        border-radius: 7px;
+        border-radius: 6px;
         box-shadow: 2px 2px 15px rgba(31, 31, 31, 0.283);
 
 
 
 
             h2 {
-                color: $color1;
+                color: white;
             }
 
             input[type=text] {
@@ -57,16 +75,37 @@ section {
             }
 
             button {
+                background-color: purple;
+
                 height: 30px;
+                width: 100px;
 
                 border: none;
-                border-radius: 5px;
+                border-radius: 4px;
                 
                 cursor: pointer;
 
                 &:hover {
-                    background-color: blue;
+                    background-color: rgb(118, 46, 118);
                 }
             }
     }
+}
+
+footer {
+    background-color: $color3;
+    color: $color2;
+    box-shadow: -2px -4px 11px rgb(0 0 0 / 58%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0px;
+    margin: 0;
+
 }

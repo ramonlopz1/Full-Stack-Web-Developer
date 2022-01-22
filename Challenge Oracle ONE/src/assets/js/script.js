@@ -26,7 +26,6 @@ function searchEncryptedMSG (fullText, searchMSG, letter) {
 
     arrayOfMSG.splice(indexOfElement, sizeOfElement, letter)
     arrayOfMSG = arrayOfMSG.join("")
-    
     return arrayOfMSG
 }
 
