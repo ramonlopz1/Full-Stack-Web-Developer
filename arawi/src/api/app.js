@@ -4,16 +4,12 @@ const bodyParser = require('body-parser')
 const db = require('./db')
 const path = require('path')
 const port = 9000
+const HTML_FILE = path.join(__dirname, '../index.html')
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, '../../public')))
-
-/**
- * app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'))
-})
- */
 
 app.post('/newreservation', (req, res) => {
     const reservation = db.newReservation({
@@ -23,8 +19,14 @@ app.post('/newreservation', (req, res) => {
         children: req.body.children
     })
     
-    console.log(req.body)
-    res.send(reservation)
+    if(req.body.checkin === '' || req.body.chekout === '' || req.body.adults === 'Adultos' || req.body.children === 'Crianças') {
+        return res.end('oi')
+    } else {
+        console.log(req.body)
+        res.sendFile(HTML_FILE)
+    }
+
+    
 })
 
 app.get('/reserve/:id', (req, res) => {

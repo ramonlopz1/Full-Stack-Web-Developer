@@ -1,0 +1,1 @@
+(()=>{const e=document.querySelector("#outputMSG");document.querySelector("#criptografar").onclick=()=>{!function(){const t=document.querySelector("#entryMSG").value;e.value=function(e){let t=e.split("");return t.forEach(((e,o)=>{"e"==e?t[o]="enter":"i"==e?t[o]="imes":"a"==e?t[o]="ai":"o"==e?t[o]="ober":"u"==e&&(t[o]="ufat")})),t=t.join(""),t}(t)}()}})();

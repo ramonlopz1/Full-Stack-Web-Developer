@@ -60,17 +60,17 @@
     
     <section id="section-reserva">
         <div>Reserve:</div>
-        <form>
+        <form name="form-reserva" onsubmit="return validation()">
             <input type="date" name="checkin" placeholder="Checkin">
             <input type="date" name="checkout">
-            <select name="adults">
+            <select name="adults" id="adults">
                 <option>Adultos</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
-            <select name="children">
+            <select name="children" id="children">
                 <option>Crianças</option>
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -79,7 +79,7 @@
                 <option value="4">4</option>
             </select>
 
-            <input formaction="/newreservation" formmethod="POST" type="submit" value="Consultar">
+            <input formaction="/newreservation" formmethod="POST" type="submit" value="Consultar"">
         </form>
 
     </section>
@@ -89,7 +89,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="assets/js/main.js"></script>
-    
+    <script src="api/validation.js"></script>
 <style>
 
 </style>

@@ -1,0 +1,72 @@
+@import 'variaveis';
+
+body {
+    font-family: sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: $color4;
+}
+
+section {
+    background-color: $color3;
+
+    height: 700px;
+    width: 600px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+
+    h1 {
+        color: white;
+        font-size: 35px;
+    }
+
+    #card1, #card2 {
+        background-color: $color2;
+        
+        height: 200px;
+        width: 400px;
+        padding: 20px;
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        flex-direction: column;
+
+        border-radius: 7px;
+        box-shadow: 2px 2px 15px rgba(31, 31, 31, 0.283);
+
+
+
+
+            h2 {
+                color: $color1;
+            }
+
+            input[type=text] {
+                height: 35px;
+                width: 200px;
+
+                border: none;
+                border-radius: 4px;
+            }
+
+            button {
+                height: 30px;
+
+                border: none;
+                border-radius: 5px;
+                
+                cursor: pointer;
+
+                &:hover {
+                    background-color: blue;
+                }
+            }
+    }
+}
