@@ -26,7 +26,7 @@ function letsEncrypt (nome) {
     return this.nomeToArray
 }
 
-function letsUncrypt(nome) {
+function letsDecrypt(nome) {
 
     this.nomeToArray.forEach((cryptedText, index) => {
         if(cryptoMSG.find(code => code == cryptedText)) {
@@ -38,6 +38,57 @@ function letsUncrypt(nome) {
 
 
 console.log(letsEncrypt("ramon"))
-console.log(letsUncrypt())
+console.log(letsDecrypt())
+
+function searchEncryptedMSG (fullText, searchMSG, letter) {
+    let indexOfElement = fullText.search(searchMSG)
+    let sizeOfElement = searchMSG.length
+    let arrayOfMSG = fullText.split("")
+
+    arrayOfMSG.splice(indexOfElement, sizeOfElement, letter)
+    arrayOfMSG = arrayOfMSG.join("")
+    
+    return arrayOfMSG
+}
 
 
+
+let nomee = "vaiimes tenter fufatdenterr"
+    
+
+        for(let letra of nomee) {
+            if(nomee.search("ober") !== -1) {
+                nomee = searchEncryptedMSG(nomee, "ober", "o")
+            } else if (nomee.search("ai") !== -1) {
+                nomee = searchEncryptedMSG(nomee, "ai", "a")
+            } else if (nomee.search("enter") !== -1) {
+                nomee = searchEncryptedMSG(nomee, "enter", "e")
+            } else if (nomee.search("imes") !== -1) {
+                nomee = searchEncryptedMSG(nomee, "imes", "i")
+            } else if (nomee.search("ufat") !== -1) {
+                nomee = searchEncryptedMSG(nomee, "ufat", "u")
+            }
+        }
+        console.log(nomee)
+
+    // console.log(nomee.search("ober"))
+   // console.log(nomee.slice(4, 8))
+    
+    
+    /**
+     *   if(nomee.search("enter")) {
+        nomee = nomee.replace("enter", "e")
+    } else if(nomee.search("imes")) {
+        nomee = nomee.replace("imes", "i")
+    } else if(nomee.search("ai")) {
+        nomee = nomee.replace("ai", "a")
+
+
+        else if(nomee.search("ufat")) {
+        nomee = nomee.replace("ufat", "u")
+    }
+     */
+
+    console.log()
+    
+    console.log(nomee.search("rai"))

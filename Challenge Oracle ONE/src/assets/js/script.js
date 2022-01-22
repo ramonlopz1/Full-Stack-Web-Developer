@@ -1,9 +1,9 @@
-const outputMSG = document.querySelector('#outputMSG')
 const btnEncrypt = document.querySelector('#btnEncrypt')
 const btnDecrypt = document.querySelector('#btnDecrypt')
+const outputMSG = document.querySelector('#outputMSG')
 const cryptoMSG = ["ai", "enter", "imes", "ober", "ufat"]
 const vogals = ["a", "e", "i", "o", "u"]
-
+let isCrypted = false
 // Muda as vogais para os valores criptografados
 /**
  * function changeVogals(msg) {
@@ -27,40 +27,76 @@ const vogals = ["a", "e", "i", "o", "u"]
  */
 
 
-
 function letsEncrypt (nome) {
     
-    this.nomeToArray = nome.split("")
+    nomeToArray = nome.split("")
 
     nomeToArray.forEach((letter, index)  => {
         if(vogals.find(vogal => vogal == letter)) {
-            this.nomeToArray[index] = cryptoMSG[vogals.indexOf(letter)]
+            nomeToArray[index] = cryptoMSG[vogals.indexOf(letter)]
         }
     })
-    return this.nomeToArray
+    return nomeToArray.join("")
 }
 
-function letsUncrypt(nome) {
 
-    this.nomeToArray.forEach((cryptedText, index) => {
-        if(cryptoMSG.find(code => code == cryptedText)) {
-            nomeToArray[index] = vogals[cryptoMSG.indexOf(cryptedText)]
+
+
+function searchEncryptedMSG (fullText, searchMSG, letter) {
+    let indexOfElement = fullText.search(searchMSG)
+    let sizeOfElement = searchMSG.length
+    let arrayOfMSG = fullText.split("")
+
+    arrayOfMSG.splice(indexOfElement, sizeOfElement, letter)
+    arrayOfMSG = arrayOfMSG.join("")
+    
+    return arrayOfMSG
+}
+
+function letsDecrypt(nome) {
+
+    for(let letra of nome) {
+        if(nome.search("ober") !== -1) {
+            nome = searchEncryptedMSG(nome, "ober", "o")
+        } else if (nome.search("ai") !== -1) {
+            nome = searchEncryptedMSG(nome, "ai", "a")
+        } else if (nome.search("enter") !== -1) {
+            nome = searchEncryptedMSG(nome, "enter", "e")
+        } else if (nome.search("imes") !== -1) {
+            nome = searchEncryptedMSG(nome, "imes", "i")
+        } else if (nome.search("ufat") !== -1) {
+            nome = searchEncryptedMSG(nome, "ufat", "u")
         }
-    })
-    return this.nomeToArray
+    }
+    return nome
 }
+
+
+
 
 // Altera o valor do input com a nova mensagem
-function changeVal(msg) {
+function sendResultCrypted () {
+    
     const entryMSG = document.querySelector('#entryMSG').value
-
     const encryptMSG = letsEncrypt(entryMSG)
+    
+    outputMSG.value = encryptMSG
 
-    outputMSG.value = encryptMSG.join("")
+    
+}
+
+function sendResultDecrypted () {
+    const entryMSG = document.querySelector('#entryMSG').value
+    const decryptMSG = letsDecrypt(entryMSG)
+
+    outputMSG.value = decryptMSG
     
 }
 
 btnEncrypt.onclick = () => {
-    changeVal()
+    sendResultCrypted()
 }
 
+btnDecrypt.onclick = () => {
+    sendResultDecrypted()
+}
