@@ -53,8 +53,10 @@ function searchEncryptedMSG (fullText, searchMSG, letter) {
 
 
 
-let nomee = "vaiimes tenter fufatdenterr"
-    
+let nomee = "raimobern"
+        let novoArray = []
+
+        
 
         for(let letra of nomee) {
             if(nomee.search("ober") !== -1) {
