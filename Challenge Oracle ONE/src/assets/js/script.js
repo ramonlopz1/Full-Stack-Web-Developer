@@ -1,5 +1,6 @@
 const btnEncrypt = document.querySelector('#btnEncrypt')
 const btnDecrypt = document.querySelector('#btnDecrypt')
+const btnCopy = document.querySelector("#btnCopy")
 const outputMSG = document.querySelector('#outputMSG')
 const cryptoMSG = ["ai", "enter", "imes", "ober", "ufat"]
 const vogals = ["a", "e", "i", "o", "u"]
@@ -70,4 +71,7 @@ btnDecrypt.onclick = () => {
     sendResultCrypted()
 }
 
-
+btnCopy.onclick = () => {
+    outputMSG.select()
+    document.execCommand('copy');
+}
