@@ -6,10 +6,9 @@ const cryptoMSG = ["ai", "enter", "imes", "ober", "ufat"]
 const vogals = ["a", "e", "i", "o", "u"]
 let isCrypted = false
 
-// criptografa o valor recebido
+// criptografa o valor recebido: substitui vogais por cryptoMSG
 function letsEncrypt (nome) {
-    nomeToArray = nome.split("")
-
+    let nomeToArray = nome.split("")
     nomeToArray.forEach((letter, index)  => {
         if(vogals.find(vogal => vogal == letter)) {
             nomeToArray[index] = cryptoMSG[vogals.indexOf(letter)]
