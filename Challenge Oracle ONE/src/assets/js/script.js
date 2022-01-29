@@ -1,75 +1,66 @@
-const btnEncrypt = document.querySelector('#btnEncrypt')
-const btnDecrypt = document.querySelector('#btnDecrypt')
-const btnCopy = document.querySelector("#btnCopy")
-const outputMSG = document.querySelector('#outputMSG')
-const cryptoMSG = ["ai", "enter", "imes", "ober", "ufat"]
-const vogals = ["a", "e", "i", "o", "u"]
-let isCrypted = false
-
 // criptografa o valor recebido: substitui vogais por cryptoMSG
-function letsEncrypt (nome) {
-    let nomeToArray = nome.split("")
-    nomeToArray.forEach((letter, index)  => {
+const cryptoMSG = ["ai", "enter", "imes", "ober", "ufat"];
+const vogals = ["a", "e", "i", "o", "u"];
+
+function letsEncrypt(ctx) {
+    let ctxToArray = ctx.split("")
+    ctxToArray.forEach((letter, index)  => {
         if(vogals.find(vogal => vogal == letter)) {
-            nomeToArray[index] = cryptoMSG[vogals.indexOf(letter)]
+            ctxToArray[index] = cryptoMSG[vogals.indexOf(letter)]
         }
     })
-    return nomeToArray.join("")
-}
+    return ctxToArray.join("")
+};
 
-// procura no valor recebido, palavras criptografadas
-function searchEncryptedMSG (fullText, searchMSG, letter) {
-    let indexOfElement = fullText.search(searchMSG)
-    let sizeOfElement = searchMSG.length
-    let arrayOfMSG = fullText.split("")
-
-    arrayOfMSG.splice(indexOfElement, sizeOfElement, letter)
-    arrayOfMSG = arrayOfMSG.join("")
-    return arrayOfMSG
-}
-
-// caso encontre palavras encriptadas, faz-se a descriptação
-function letsDecrypt(nome) {
-    for(let letra of nome) {
-        if(nome.search("ober") !== -1) {
-            nome = searchEncryptedMSG(nome, "ober", "o")
-        } else if (nome.search("ai") !== -1) {
-            nome = searchEncryptedMSG(nome, "ai", "a")
-        } else if (nome.search("enter") !== -1) {
-            nome = searchEncryptedMSG(nome, "enter", "e")
-        } else if (nome.search("imes") !== -1) {
-            nome = searchEncryptedMSG(nome, "imes", "i")
-        } else if (nome.search("ufat") !== -1) {
-            nome = searchEncryptedMSG(nome, "ufat", "u")
-        }
+// caso encontre palavras criptografadas, faz-se a descriptação
+function letsDecrypt(ctx) {
+    for(let i = 0; i < ctx.length; i ++) {
+        ctx = ctx.replaceAll(cryptoMSG[i], vogals[i])
     }
-    return nome
-}
+    return ctx
+};
 
 // Altera o valor do input com a nova mensagem
-function sendResultCrypted () {
-    const entryMSG = document.querySelector('#entryMSG').value
+const inputMSG = document.querySelector('#inputMSG')
+const outputMSG = document.querySelector('#outputMSG')
+let isCrypted = true
+
+function sendResultCrypted() {
+    
     if (isCrypted) {
-        const encryptMSG = letsEncrypt(entryMSG)    
+        const encryptMSG = letsEncrypt(inputMSG.value)    
         outputMSG.value = encryptMSG
     } else {
-        const decryptMSG = letsDecrypt(entryMSG)
+        const decryptMSG = letsDecrypt(inputMSG.value)
         outputMSG.value = decryptMSG
     }
-}
+};
 
-// eventos
-btnEncrypt.onclick = () => {
-    isCrypted = true
-    sendResultCrypted()
-}
+// eventos onclick para cada tipo de botão
 
-btnDecrypt.onclick = () => {
-    isCrypted = false
-    sendResultCrypted()
-}
+const testCharacters = /^[a-z0-9 ]*$/g
+const { animation } = require('./animationContainers')
+const buttons = document.querySelectorAll('button')
 
-btnCopy.onclick = () => {
-    outputMSG.select()
-    document.execCommand('copy');
-}
+buttons.forEach(button => {
+    button.onclick = () => {
+        if(inputMSG.value.match(testCharacters)) {
+            if (button.hasAttribute('uncrypted')) {
+                isCrypted = true
+            } else if (button.hasAttribute('crypted')) {
+                isCrypted = false
+            } else {
+                outputMSG.select()
+                document.execCommand('copy');
+            }
+                sendResultCrypted()
+                animation()
+        } else {
+            alert('Insira apenas letras minúsculas.')
+        }
+    }   
+});
+
+
+
+    

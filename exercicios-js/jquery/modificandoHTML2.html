@@ -17,6 +17,29 @@
     <p class='numero'>5</p>
 
     <script>
-        // ...
+        $('#div1').append(', 2')
+        $('#div1').prepend('0, ')
+
+        $('<span>, 3</span>').appendTo('#div1')
+        $('<span>-1, </span>').prependTo('#div1') // cria e joga dentro de div1
+
+        $('#div2').before('<p>Antes 2</p>')
+        $('#div2').after('<p>Depois 2</p>')
+
+        $('<p>Antes 3</p>').insertBefore('#div3') // cria e joga antes div3
+        $('<p>Antes 3</p>').insertAfter('#div3') // cria e joga depois de div3
+
+        $('p.numero').wrap('<div>') // cria uma div para cada p.numero
+        $('p.numero').wrapAll('<div id="div4>') //cria uma unica div com id e joga todos os p.numeros dentro dela
+        $('#div4').empty() // remove tudo dentro de div4
+        $('#div3, #div4').prev().remove // seleciona o conteudo antes de div3 e div4 e remove-os
+
+       //  $('<div>Substituto</div>').replaceAll('body > p') 
+        $('body > p').replaceWith('<div>Substituo</div>') // substitui todo body > p pela <div> criada
+
+        $('body > p').replaceWith(function () {
+            return $('<div>').html($(this.html())) // substitui e mantem o conteudo. this refere-se a body > p
+        })
+
     </script>
 </body>

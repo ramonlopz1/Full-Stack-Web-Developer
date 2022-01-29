@@ -95,6 +95,6 @@
         const elementoDOM = document.getElementsByClassName('menu')
 
         $(elementoDOM).css(comBorda)
-        $('main').children().each((i, e) => $(e).css(comBorda))
+        $('main').children().each((indice, elemento) => $(elemento).css(comBorda)) // em cada filho do MAIN, executa comBorda
     </script>
 </body>

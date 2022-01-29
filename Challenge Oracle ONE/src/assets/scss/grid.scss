@@ -1,0 +1,50 @@
+canvas {
+    grid-area: 'canvas';
+}
+
+section {
+    
+    grid-area: 'section';
+}
+
+footer {
+    grid-area: 'footer';
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 93vh 550px 100px;
+    grid-template-areas: 
+    'canvas'
+    'section'
+    'footer';
+}
+
+@media (max-width: 1660px) {
+    
+    section {
+        height: 460px;
+        width: 1000px;
+        
+        #cards {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: row;
+            width: inherit;
+        }
+
+        #card1 {
+            height: 300px;
+        }
+
+        #card1, #card2 {
+            width: 400px;
+
+            h2 {
+                font-size: 18px;
+            }
+        }
+    }
+}

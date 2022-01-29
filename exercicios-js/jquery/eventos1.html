@@ -20,6 +20,38 @@
     <input type="text" placeholder="Cor de Background">
 
     <script>
-        // ...
+        function mostrarPosicaoMouse(e) {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+
+        $('body').on('mousemove', mostrarPosicaoMouse)
+
+
+        $('#posicao').mouseover(e => { //callback
+            $('body').off('mousemove', mostrarPosicaoMouse) //desativa a função mostrarPosicaoMouse quando o mouse está sobre a div #posicao
+        })
+
+        $('#posicao').mouseleave(e => { // ativa a função quando o mouse sair da div
+            $('body').on('mousemove', mostrarPosicaoMouse)
+        })
+
+
+        // contador de cliques
+        let clique = 0
+        $('body').click(e => {
+            $('#cliques').html(`Cliques: ${++clique}`)
+        })
+
+        const backgroundOriginal = $('body').css('background-color')
+
+        $('input').keyup(function (e) {
+            const valor = $(this).val() //valor atual, ou seja, o valor de cada tecla
+
+            if(valor.match(/#[\da-fA-F]{3,6}/)) { // começa por cerquila, d = digito {3, 6} repetições no máximo
+                $('body').css('background-color', valor)
+            } else {
+                $('body').css('background-color', backgroundOriginal)
+            }
+        })
     </script>
 </body>
