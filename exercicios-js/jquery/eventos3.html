@@ -26,6 +26,33 @@
     <span id='resultado'></span>
 
     <script>
-        // ...
+
+        function exibirDadosEvento(e) {
+            $('#resultado').empty()
+            const div1 = $('<div>')
+            const div2 = $('<div>')
+
+            $('#resultado').append(div1, div2)
+            div1.append(`target: ${e.target.id}`)
+            const rt = e.relatedTarget ? e.relatedTarget.tagName : null
+            div1.append(`<br>relatedTarget: ${rt}`) //elemento que está relacionado com o evento, neste caso o BODY
+
+            div1.append(`<br>type: ${e.type}`) //tipo de evento (mouseenter mouseleave)
+            div1.append(`<br>which: ${e.which}`) // mostra a numeração de cada tecla ou botao do mouse que foi clicado
+            div1.append(`<br>metaKey: ${e.metaKey}`) // tecla windows ativada
+
+            div2.append(`pageX: ${e.pageX}`)
+            div2.append(`<br>pageY: ${e.pageX}`)
+            div2.append(`<br>clientX: ${e.clientX}`)
+            div2.append(`<br>clientY: ${e.clientY}`)
+            
+            const obs = e.data ? e.data.teste : null
+            div2.append(`<br> obs: ${obs}`)
+        }
+
+        $('#div1, #div2').on('mouseenter mouseleave',
+        { obs: 'Functiona', texte: 123 }, exibirDadosEvento)
+        $('input').keyup(exibirDadosEvento)
     </script>
 </body>
+
