@@ -49,6 +49,7 @@ function head() {
     pincel.arc(375, 310, 30, 0, 2 * Math.PI)
     pincel.stroke()
     pincel.fill()
+    setted = true
 }
 //////
 
