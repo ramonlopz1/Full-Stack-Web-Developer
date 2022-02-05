@@ -1,17 +1,21 @@
 
-const tela = document.querySelector('canvas')
-const pincel = tela.getContext('2d')
+const drawArea = document.querySelector('#drawArea')
+const drawAreaPoints = document.querySelector('#drawAreaPoints')
+
+const pincel = drawArea.getContext('2d')
+const pincel2 = drawAreaPoints.getContext('2d')
 
 // x y
 
 // TRIANGULO BASE
 pincel.beginPath()
-    pincel.fillStyle = 'black'
+    pincel.fillStyle = 'gray'
 
     pincel.moveTo(50, 620)
 
     pincel.lineTo(125, 570)
     pincel.lineTo(200, 620)
+    
     pincel.fill()
 
 
@@ -19,44 +23,38 @@ pincel.beginPath()
 
 // BARRA VERTICAL MAIOR
 pincel.beginPath()
-    pincel.fillStyle = 'black'
+    pincel.fillStyle = 'gray'
     pincel.fillRect(120, 180, 10, 400)
     pincel.fill()
 //////
 
 // BARRA HORIZONTAL
 pincel.beginPath()
-    pincel.fillStyle = 'black'
+    pincel.fillStyle = 'gray'
     pincel.fillRect(120, 180, 250, 10)
     pincel.fill()
 //////
 
 // BARRA VERTICAL MENOR
 pincel.beginPath()
-    pincel.fillStyle = 'black'
+    pincel.fillStyle = 'gray'
     pincel.fillRect(370, 180, 10, 130)
     pincel.fill()
 //////
 
-
-
-
-
 // CABEÇA
 function head() {
     pincel.beginPath()
-    pincel.fillStyle = 'blue'
+    pincel.fillStyle = '#EB9613'
     pincel.arc(375, 310, 30, 0, 2 * Math.PI)
-    pincel.stroke()
     pincel.fill()
-    setted = true
 }
 //////
 
 // CORPO    
 function body() {
     pincel.beginPath()
-    pincel.fillStyle = 'blue'
+    pincel.fillStyle = '#EB9613'
     pincel.fillRect(370, 340, 10, 100)
     pincel.fill()
 }
@@ -65,7 +63,7 @@ function body() {
 // BRAÇO ESQUERDO
 function leftArm() {
     pincel.beginPath()
-    pincel.fillStyle = 'blue'
+    pincel.fillStyle = '#EB9613'
     pincel.moveTo(360, 340)
 
     pincel.lineTo(320, 370)
@@ -78,7 +76,7 @@ function leftArm() {
 // BRAÇO DIREITO
 function rightArm() {
     pincel.beginPath()
-    pincel.fillStyle = 'blue'
+    pincel.fillStyle = '#EB9613'
     pincel.moveTo(360, 340)
 
     pincel.lineTo(420, 370)
@@ -91,7 +89,7 @@ function rightArm() {
 // PERNA ESQUERDA
 function leftLeg() {
     pincel.beginPath()
-    pincel.fillStyle = 'blue'
+    pincel.fillStyle = '#EB9613'
     pincel.moveTo(360, 440)
 
     pincel.lineTo(320, 470)
@@ -104,7 +102,7 @@ function leftLeg() {
 // PERNA DIREITA
 function rightLeg() {
     pincel.beginPath()
-    pincel.fillStyle = 'blue'
+    pincel.fillStyle = '#EB9613'
     pincel.moveTo(360, 440)
 
     pincel.lineTo(420, 470)
@@ -115,6 +113,15 @@ function rightLeg() {
 //////
 
 
+function chancePoint(posX) {
+    pincel2.beginPath()
+    pincel2.fillStyle = 'red'
+    const circ = pincel2.arc(posX, 25, 15, 0, 2 * Math.PI)
+    posX = posX + 20
+    pincel2.fill()
+    return circ
+}
+
 module.exports = {
     head,
     body,
@@ -122,4 +129,5 @@ module.exports = {
     rightArm,
     leftLeg,
     rightLeg,
+    chancePoint
 }

@@ -1,3 +1,5 @@
+@import 'variaveis.scss';
+
 body {
     display: flex;
     justify-content: center;
@@ -9,7 +11,7 @@ body {
     margin: 0;
 
     font-family: sans-serif;
-    background-color: rgb(37, 251, 194);
+    background-color: rgb(21, 21, 21);
 }
 
 section {
@@ -17,11 +19,36 @@ section {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    background-color: greenyellow;
     
-    height: 80%;
+    background-color: black;
+    border: 5px solid $cian;
+    border-radius: 20px;
+    box-shadow: 2px 2px 15px black;
+    
+    height: 90%;
     width: 70%;
+}
+
+section h1 {
+    color: $darkBlue;
+    font-size: 40px;
+}
+
+section aside {
+    display: flex;
+    flex-direction: row;
+}
+
+section aside > span:nth-of-type(1) {
+    font-size: 28px;
+    color: green;
+}
+
+section aside #drawAreaPoints {
+    width: 200px;
+    display: flex;
+    justify-content: flex-start;
+
 }
 
 section article {
@@ -30,18 +57,16 @@ section article {
     align-items: center;
     flex-direction: row;
 
-    background-color: green;
-
     height: 80%;
     width: 100%;
 }
 
-section article #boneco {
+section article #doll {
     height: 670px;
     width: 40%;
 }
 
-#conteudo {
+#content {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -51,29 +76,37 @@ section article #boneco {
     width: 60%;
 }
 
-#letraEscolhida, #palavraSecreta {
+#choosedLetter, #secretWord {
     font-size: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background-color: pink;
+    background-color: $lightGray;
 
     height: 100px;
     width: 600px;
 }
 
-#palavraSecreta {
-    background-color: blue;
+#secretWord {
+    overflow: hidden;
+    background-color: $cian;
+    border-radius: 7px;
+    height: 300px;
 }
 
-#palavraSecreta .spanLetras {
-    font-size: 65px;
+#secretWord .spanLetras {
+
+    font-size: 45px;
     margin: 20px;
 }
 
 
-#resultadoFinal {
+#finalResult {
+    color: $darkBlue;
+    font-size: 35px;
+    text-align: center;
+
     height: 10%;
     width: 100%;
 }

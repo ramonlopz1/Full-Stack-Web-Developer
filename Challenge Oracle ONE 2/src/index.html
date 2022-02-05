@@ -10,16 +10,22 @@
 <body>
     <section>
         <h1>Jogo da Forca</h1>
+        <aside>
+            <span>Chances:</span>
+            <span id="numberOfChances">
+                <canvas id="drawAreaPoints"></canvas>
+            </span>
+        </aside>
         <article>
-            <div id="boneco">
-                <canvas height="670px" width="600px"></canvas>
+            <div id="doll">
+                <canvas id="drawArea" height="670px" width="600px"></canvas>
             </div>
-            <aside id="conteudo">
-                <div id="letraEscolhida">A B C</div>
-                <div id="palavraSecreta"></div>
+            <aside id="content">
+                <div id="choosedLetter"></div>
+                <div id="secretWord"></div>
             </aside>
         </article>
-        <div id="resultadoFinal"></div>
+        <div id="finalResult"></div>
     </section>
     <script src="assets/js/main.js"></script>
 

@@ -1,60 +1,125 @@
 const $ = require('jquery')
-const { head, body, leftArm, rightArm, leftLeg, rightLeg,} = require('./canvas')
+const { head, body, leftArm, rightArm, leftLeg, rightLeg, chancePoint} = require('./canvas')
+
 $(document).ready(function(){
     let letter = ""
-    let erros = 0
+    let errors = 0
+    let chances = 6
+
+    const wordsToPlay = ["davi", "ramon", "lopes", "faustino", "carlos", "pedro"]
+    const raffleWord = wordsToPlay[Math.floor(Math.random() * (wordsToPlay.length - 0) + 0)]
+    
+    const numberOfChances = $('#numberOfChances')
+    const secretWord = $('#secretWord')
+    const finalResult = $('#finalResult')
+    const choosedLetter = $('#choosedLetter')
+
+    let inputtedLetters = []
+
     $('body').keypress(function(e) {
         letter = String.fromCharCode(e.which)
-
         if (letter.match(/^[a-zA-Z]*$/)) {
-            setDrawing(sorteiaPalavra)
+            setDrawing(raffleWord)
+            compareWords(raffleWord)
+            choosedLetter.append(`${letter.toUpperCase()}`)
         }
-    });
-
-    const arrayPalavras = ["alura", "ramon", "lopes", "faustino", "pereira", "pinta"]
-    const sorteiaPalavra = arrayPalavras[Math.floor(Math.random() * (arrayPalavras.length - 0) + 0)]
-    const palavraSecreta = $('#palavraSecreta')
-
-    function letterToLetter(palavra) {
-        for(let i = 0; i < palavra.length; i++) {
-            palavraSecreta.append($('<span class="spanLetras">').html('_'))
+    })
+    
+    addPoints(chances)
+    
+    function addPoints(chances) {
+        indent = 20
+        for(let i = 0; i < chances; i++) {
+            chancePoint(indent)
+            indent += 40
         }
     }
 
-    letterToLetter(sorteiaPalavra)
+    function letterToLetter(ctx) {
+        
+        for(let i = 0; i < ctx.length; i++) {
+            secretWord.append($('<span class="spanLetras">').html('_'))
+        }
+    }
 
-    function replaceLetter(palavra) {
-        for(let i = 0; i < palavra.length; i++) {
-            if(palavra[i] === letter) {
-                $(`#palavraSecreta span:nth-of-type(${i+1})`).html(letter)
+    
+
+    letterToLetter(raffleWord)
+
+    function replaceLetter(ctx) {
+        for(let i = 0; i < ctx.length; i++) {
+            if(ctx[i] === letter) {
+                $(`#secretWord span:nth-of-type(${i+1})`).html(letter)
             } 
         }
     }
 
-    function setDrawing(palavra) {
-        for(let i = 0; i < palavra.length; i++) {
-            if(palavra.search(letter) == -1) {
-                erros++
+    function compareWords(ctx) {
+        for(let i = 0; i < ctx.length; i++) {
+            if(ctx[i] === letter) {
+                inputtedLetters.push(letter)
+            } 
+        }
                 
-                if(erros == 1) {
+        testBothWords(inputtedLetters, ctx)
+    }
+    
+    function setDrawing(ctx) {
+        for(let i = 0; i < ctx.length; i++) {    
+            
+            if(ctx.search(letter) == -1) {
+                errors++
+                chances--
+                numberOfChances.empty('#drawAreaPoints')
+
+                numberOfChances.append('<canvas id="drawAreaPoints"></canvas>')
+                addPoints(chances)
+                console.log(chances)
+                
+                if(errors == 1) {
                     head()
-                } else if (erros == 2) {
+                } else if (errors == 2) {
                     body()
-                } else if (erros == 3) {
+                } else if (errors == 3) {
                     leftArm()
-                } else if (erros == 4) {
+                } else if (errors == 4) {
                     rightArm()
-                } else if (erros == 5) {
+                } else if (errors == 5) {
                     leftLeg()
-                } else if (erros == 6) {
+                } else if (errors == 6) {
                     rightLeg()
+                } else if (errors >= 6) {
+                    finalResult.html('Fim de jogo. Você perdeu todas as chances.')
                 }
                
                 break
             } else {
-                replaceLetter(palavra)
+                replaceLetter(ctx)
             }
         }
     }
+
+    function testBothWords(wrongCtx, ctx) {
+        let newCtx = []
+        
+        ctx = ctx.split("")
+        
+        for(let i = 0; i < wrongCtx.length; i++) {
+            element = wrongCtx[i] // a
+            toIndex = ctx.indexOf(element) // 1
+            newCtx[toIndex] = element // a partir de 3, remova nenhum e insira 1
+        }
+        
+        newCtx = newCtx.join("")
+        ctx = ctx.join("")
+        if(ctx == newCtx) {
+            finalResult.html('VOCÊ VENCEU!')
+        }           
+    }
+
+    
+
+    
 }); 
+
 
