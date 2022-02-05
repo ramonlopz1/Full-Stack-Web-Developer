@@ -114,12 +114,12 @@ function rightLeg() {
 
 
 function chancePoint(posX) {
+    
     pincel2.beginPath()
     pincel2.fillStyle = 'red'
-    const circ = pincel2.arc(posX, 25, 15, 0, 2 * Math.PI)
+    pincel2.arc(posX, 25, 15, 0, 2 * Math.PI)
     posX = posX + 20
     pincel2.fill()
-    return circ
 }
 
 module.exports = {
