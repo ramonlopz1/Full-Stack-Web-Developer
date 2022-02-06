@@ -1,24 +1,25 @@
-const wrongArray = ["a", "r", "n", "m", "o"]
-const correctArray = ["r", "a", "m", "o", "n"]
-const newArray = []
-let element = ""
+const axios = require('axios')
+let wordsToPlay = []
 
+function getWords() {
+    
+    const url = 'https://raw.githubusercontent.com/trainingOracle/jogo-da-forca/main/js/wordlist_pt_br.txt'
 
-
-function arraymove(wrongArray, correctArray) {
-
-    for(let i = 0; i < wrongArray.length; i++) {
-        element = wrongArray[i] // a
-        toIndex = correctArray.indexOf(element) // 1
-       
-        newArray[toIndex] = element // a partir de 3, remova nenhum e insira 1
-    }
-
-    return newArray
+    return new Promise (resolve => {
+        let resultado = ''
+        resolve(
+            axios.get(url).then(response => {
+                response.data.split('\n')     
+                })
+        )
+    })
 }
 
+async function doTheJob() {
+    let a = await getWords()
+    return a
+}
 
-console.log(arraymove(wrongArray, correctArray))
-
-
-
+doTheJob()
+    .then(valor => valor)
+    .then(console.log)
