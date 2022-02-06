@@ -17,7 +17,7 @@ body {
 
 section {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     
@@ -63,7 +63,7 @@ section article {
 }
 
 section article #doll {
-    height: 670px;
+    height: 810px;
     width: 40%;
 }
 
@@ -77,23 +77,30 @@ section article #doll {
     width: 60%;
 }
 
-#choosedLetter, #secretWord {
+#choosedLetter {
+    color: $cian;
     font-size: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background-color: $lightGray;
+    border: 3px solid $lightGray;
 
     height: 100px;
     width: 600px;
 }
 
 #secretWord {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     overflow: hidden;
     background-color: $cian;
     border-radius: 7px;
     height: 300px;
+    width: 600px;
 }
 
 #secretWord .spanLetras {
@@ -104,16 +111,36 @@ section article #doll {
 
 
 #finalResult {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
     color: $darkBlue;
     font-size: 25px;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+#finalResult #btnPlayAgain {
+    display: none;
+    background-color: $cian;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    height: 30px;
+    width: 100px;
+
+    &:hover {
+        background-color: #f05375;
+    }
 }
 
 #avaibleWords {
     color: $cian;
     font-size: 20px;
-    justify-content: flex-start;
+    justify-content: space-between;
     overflow-y: hidden;
     margin-left: 10px;
     border-radius: 20px 0px 0px 20px;
@@ -122,7 +149,44 @@ section article #doll {
     width: 200px;
 }
 
-#avaibleWords div {
+#avaibleWords #words {
+    padding: 10px;
+    text-align: center;
     color: white;
     margin-top: 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#avaibleWords #insertWords {
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    position: absolute;
+    bottom: 170px;
+
+    background-color: $cian;
+    color: white;
+    height: 100px;
+    width: 300px;
+
+    border-radius: 7px;
+}
+
+#avaibleWords #btnAdd {
+    
+    background-color: $cian;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    height: 30px;
+    width: 50px;
+    margin-bottom: 50px;
+
+    &:hover {
+        background-color: #f05375;
+    }
 }

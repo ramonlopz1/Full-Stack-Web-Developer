@@ -2,7 +2,6 @@ const $ = require('jquery')
 const { head, body, leftArm, rightArm, leftLeg, rightLeg, chancePoint} = require('./canvas')
 
 $(document).ready(function(){
-
     let letter = ""
     let errors = 0
     let chances = 6
@@ -11,7 +10,7 @@ $(document).ready(function(){
     const raffleWord = wordsToPlay[Math.floor(Math.random() * (wordsToPlay.length - 0) + 0)]
     
     const secretWord = $('#secretWord')
-    const finalResult = $('#finalResult')
+    const finalMSG = $('#finalMSG')
     const choosedLetter = $('#choosedLetter')
 
     let inputtedLetters = []
@@ -57,7 +56,7 @@ $(document).ready(function(){
     function replaceLetter(ctx) {
         for(let i = 0; i < ctx.length; i++) {
             if(ctx[i] === letter) {
-                $(`#secretWord span:nth-of-type(${i+1})`).html(letter)
+                $(`#secretWord span:nth-of-type(${i+1})`).html(letter.toUpperCase())
             } 
         }
     }
@@ -99,7 +98,8 @@ $(document).ready(function(){
                 } else if (errors == 6) {
                     rightLeg()
                 } else if (errors >= 6) {
-                    finalResult.html('Fim de jogo. Você perdeu todas as chances.')
+                    finalMSG.html('Fim de jogo. Você perdeu todas as chances.')
+                    $('#btnPlayAgain').css('display', 'block')
                 }
                 
                 break // BREAK NO FOR, SEM O BREAK O "FOR" FARÁ CLEAR EM TODOS OS PONTOS
@@ -123,20 +123,60 @@ $(document).ready(function(){
         newCtx = newCtx.join("")
         ctx = ctx.join("")
         if(ctx == newCtx) {
-            finalResult.html('VOCÊ VENCEU!')
+            finalMSG.html('VOCÊ VENCEU!')
+            $('#btnPlayAgain').css('display', 'block')
         }           
     }
 
     // INSERE NA DOM AS PALAVRAS DISPONÍVEIS PARA JOGAR
     function avaibleWords() {
-        const avWords = $('#avaibleWords')
+        const avWords = $('#avaibleWords #words')
 
         for(words of wordsToPlay) {
             avWords.append(`<div>${words.toUpperCase()}`)
         }
     }
 
+    
+
+    // INSERIR NOVAS PALAVRAS
+
+    function insertWords() {
+        const btnAdd = $('#btnAdd')
+        const insWords = $('#insertWords')
+        const input = $('input')
+        const btnOk = $('#insertWords div button')
+
+        btnAdd.click(() => {
+            insWords.css('display', 'flex')
+            input.focus()
+            $('input').bind('keypress', function(e) {
+                e.stopPropagation(); 
+            });
+
+        })
+
+        
+        btnOk.click(() => {
+            insWords.css('display', 'none')
+
+            // INSERE NOVAS PALVRAS NO ARRAY COM CONDIÇÕES
+            if(!wordsToPlay.find(value => value == input.val()) && (input.val()).search(" ") == -1) {
+                wordsToPlay.push(input.val())
+            }
+
+            $('#words').empty()
+            avaibleWords()
+
+            // REATIVA O KEYPRESS
+            $('input').bind('keypress', function(e) {
+                e.stopPropagation(); 
+            });
+        })
+    }
     avaibleWords()
+
+    insertWords()
 }); 
 
 
