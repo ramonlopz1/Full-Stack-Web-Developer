@@ -106,7 +106,7 @@ section article #doll {
 #secretWord .spanLetras {
 
     font-size: 45px;
-    margin: 20px;
+    margin: 10px;
 }
 
 
@@ -139,14 +139,14 @@ section article #doll {
 
 #avaibleWords {
     color: $cian;
-    font-size: 20px;
+    font-size: 17px;
     justify-content: space-between;
     overflow-y: hidden;
     margin-left: 10px;
     border-radius: 20px 0px 0px 20px;
 
     background-color: black;
-    width: 200px;
+    width: 300px;
 }
 
 #avaibleWords #words {
@@ -154,8 +154,6 @@ section article #doll {
     text-align: center;
     color: white;
     margin-top: 5px;
-    overflow-x: hidden;
-    overflow-y: scroll;
 }
 
 #avaibleWords #insertWords {

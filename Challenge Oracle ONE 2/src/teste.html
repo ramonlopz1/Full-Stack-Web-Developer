@@ -14,12 +14,24 @@
     </table>
 
     <script>
-        let url = 'https://raw.githubusercontent.com/trainingOracle/jogo-da-forca/main/js/wordlist_pt_br.txt'
-
-
-        fetch(url)
-            .then(valor => valor.text())
-            .then(console.log)
+        let words
+        let arrayss = [];
+       async function doTheJob () {
+            words = await fetch('https://raw.githubusercontent.com/trainingOracle/jogo-da-forca/main/js/wordlist_pt_br.txt')
+                                .then(response => response.text())
+                                .then(response => response.split('\n'))
+                                
+                                .catch(err => ['ERRO']);        
+                                
+                                return words
+                                
+        };
+        
+       
+        const valor = (async function outra () {
+            var total = await doTheJob()
+            console.log(total)
+        })()
     
     </script>
     
