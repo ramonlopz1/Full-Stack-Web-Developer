@@ -119,67 +119,65 @@ function setDrawing(ctx) {
     testBothWords(inputtedLetters, ctx)
 }
 
-
     // AJUSTA A ORDEM DAS LETRAS RECEBIDAS, PARA COMPARAÇÃO COM A PALAVRA SECRETA
-    function testBothWords(wrongCtx, ctx) {
-        let newCtx = []
-        ctx = ctx.split("")
-        
-        for(let i = 0; i < wrongCtx.length; i++) {
-            element = wrongCtx[i] // a
-            toIndex = ctx.indexOf(element) // 1
-            newCtx[toIndex] = element // a partir de 3, remova nenhum e insira 1
-        }
-        
-        newCtx = newCtx.join("")
-        ctx = ctx.join("")
-        if(ctx == newCtx) {
-            finalMSG.html('VOCÊ VENCEU!')
-            $('#btnPlayAgain').css('display', 'block')
-        }           
-    }
-
-    function insertWords() {
-        const btnAdd = $('#btnAdd')
-        const insWords = $('#insertWords')
-        const input = $('input')
-        const btnOk = $('#insertWords div button')
-
-        btnAdd.click(() => {
-            insWords.css('display', 'flex')
-            input.focus()
-            $('input').bind('keypress', function(e) {
-                e.stopPropagation(); 
-            });
-
-        })
-
-        
-        btnOk.click(() => {
-            insWords.css('display', 'none')
-
-            // INSERE NOVAS PALVRAS NO ARRAY COM CONDIÇÕES
-            if(!wordsToPlay.find(value => value == input.val()) && (input.val()).search(" ") == -1) {
-                wordsToPlay.push(input.val().toUpperCase())
-            }
-
-            $('#words').empty()
-            avaibleWords()
-            
-            // REATIVA O KEYPRESS
-            $('input').bind('keypress', function(e) {
-                e.stopPropagation(); 
-            });
-        })
+function testBothWords(wrongCtx, ctx) {
+    let newCtx = []
+    ctx = ctx.split("")
+    
+    for(let i = 0; i < wrongCtx.length; i++) {
+        element = wrongCtx[i] // a
+        toIndex = ctx.indexOf(element) // 1
+        newCtx[toIndex] = element // a partir de 3, remova nenhum e insira 1
     }
     
+    newCtx = newCtx.join("")
+    ctx = ctx.join("")
+    if(ctx == newCtx) {
+        finalMSG.html('VOCÊ VENCEU!')
+        $('#btnPlayAgain').css('display', 'block')
+    }           
+}
 
-    insertWords()
+function insertWords() {
+    const btnAdd = $('#btnAdd')
+    const insWords = $('#insertWords')
+    const input = $('input')
+    const btnOk = $('#insertWords div button')
 
+    btnAdd.click(() => {
+        insWords.css('display', 'flex')
+        input.focus()
+        $('input').bind('keypress', function(e) {
+            e.stopPropagation(); 
+        });
+
+    })
+
+    btnOk.click(() => {
+        insWords.css('display', 'none')
+
+        // INSERE NOVAS PALVRAS NO ARRAY COM CONDIÇÕES
+        if(!wordsToPlay.find(value => value == input.val()) && (input.val()).search(" ") == -1) {
+            wordsToPlay.push(input.val().toUpperCase())
+        }
+
+        $('#words').empty()
+        
+        avaibleWords()
+        
+        // REATIVA O KEYPRESS
+        $('input').bind('keypress', function(e) {
+            e.stopPropagation(); 
+        });
+    })
+}
+    
+insertWords()
 
 $('body').keypress(function(e) {
+    
     letter = String.fromCharCode(e.which).toUpperCase() // CONVERTE CÓDIGO WHICH(CharCode) EM LETRAS
-    if (letter.match(/^[a-zA-Z-]*$/)) { // TESTE (APENAS LETRAS)
+    if (letter.match(/^[a-zA-Z]*$/)) { // TESTE (APENAS LETRAS)
         setDrawing(raffleWord)
         compareWords(raffleWord)
         
