@@ -18,7 +18,7 @@ const storage = multer.diskStorage({ //
 
     filename: function(req, file, callback) { // define o nome do arquivo
         // callback(null, `${Date.now()}_${file.originalname}`)
-        callback(null, `imagem.${file.originalname.split(".")[1]}`)
+        callback(null, `${Date.now()}_${file.originalname}`)
         
     }
 
