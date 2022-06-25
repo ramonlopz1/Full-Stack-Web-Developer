@@ -6,7 +6,7 @@ const Nav = props => {
     return <aside className="menu-area">
         <nav className="menu">
             <Link to="/">
-                <i clLinkssNLinkme="fLink fLink-home"></i> Início
+                <i className="fa fa-home"></i> Início
             </Link>
             <Link to="/users">
                 <i className="fa fa-users"></i> Usuários
