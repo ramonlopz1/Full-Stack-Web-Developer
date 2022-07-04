@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Main from '../template/Main';
 import axios from 'axios';
-import { isFunctionDeclaration } from 'typescript';
 
 const headerProps = {
     icon: 'users',
     title: 'Usuários',
     subtitle: 'Cadastro de usuários: Incluir, Listar, Alterar e Excluir'
 }
-
 
 const initialState = {
     user: { name: '', email: '' },
@@ -22,9 +20,9 @@ export default class UserCrud extends Component {
     state = { ...initialState }
 
     // coloca dentro do objeto state, os dados vindo do db.json
-    componentWillMount() {
+    componentDidMount() {
         axios(baseUrl).then(res => {
-            this.setState( { list: res.data })
+            this.setState({ list: res.data })
         })
     }
 
@@ -42,7 +40,7 @@ export default class UserCrud extends Component {
 
             // após incluir ou alterar o user, ele retorna a lista atualizada, já com as alterações
             // res.data: retorna o conteúdo do json acessado http://localhost:3001/users
-            const list = this.getUpdatedList(res.data)
+            const list = this.getUpdatedList(res.data, true)
 
             // após salvar o usuário acima, ele usa o objeto InitialState, para zerar o formulário
             // e atualiza o array list (que está dentro do objeto initialState)
@@ -53,12 +51,14 @@ export default class UserCrud extends Component {
         })
     }
 
-    getUpdatedList(user) {
+    getUpdatedList(user, add) {
         // filtra os usuários diferentes do usuário que foi incluído ou alterado
         // ou seja, remove o usuário da lista
 
         const list = this.state.list.filter(u => u.id !== user.id)
-        list.unshift(user) // coloca o usuário na primeira posição do Array
+
+        // coloca o usuário na primeira posição do Array, se o usuário estiver setado
+        if (add) list.unshift(user)
 
         return list
     }
@@ -116,12 +116,70 @@ export default class UserCrud extends Component {
         )
     }
 
+    load(user) {
+        this.setState({ user: user })
+    }
+
+    remove(user) {
+        axios.delete(`${baseUrl}/${user.id}`).then(res => {
+
+            // cria lista sem o usuário deletado (remove da lista)
+            // se for falso, 
+            const list = this.getUpdatedList(user, false)
+
+            // atualiza lista sem o usuario deletado
+            this.setState({ list })
+        })
+    }
+
+    renderTable() {
+        return (
+            <table className="table mt-4">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.renderRows()}
+                </tbody>
+            </table>
+        )
+    }
+
+    renderRows() {
+
+        return this.state.list.map(user => {
+
+            return (
+
+                //sempre que retornar uma array de jsx, o atributo key deve ser criado para não gerar warnings
+                <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>
+                        <button className="btn btn-warning" onClick={() => this.load(user)}>
+                            <i className="fa fa-pencil"></i>
+                        </button>
+                        <button className="btn btn-danger ms-2" onClick={() => this.remove(user)}>
+                            <i className="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            )
+        })
+    }
 
     render() {
         return (
             <Main {...headerProps}>
                 Cadastro de Usuário
                 {this.renderForm()}
+                {this.renderTable()}
             </Main>
         )
     }
