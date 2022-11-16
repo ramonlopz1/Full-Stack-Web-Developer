@@ -24,12 +24,23 @@ const exec = (ctx, ...middlewares) => { // junta os passos1, 2 e 3 em um array, 
         // verifica se o middleware está setado, 
         // verifica se o indice é menor que o tamanho do array em seguida executa indice + 1
         // em seguida chama o middleware[2], passando o parâmetro (ctx)
-        middlewares && indice < middlewares.length && 
+        middlewares && indice < middlewares.length &&
             middlewares[indice](ctx, () => execPasso(indice + 1))
-         
+
     }
 
     execPasso(0) // chama a função passando o indice 0, em seguida 1, 2... até o tamanho do array
+
+    // minha versão
+    /**
+     *  for(let i = 0; i < middlewares.length; i++) {
+            if (middlewares && i < middlewares.length) {
+                middlewares[i](ctx, () => execPasso(i))    
+            }
+        }
+
+    execPasso() 
+     */
 }
 
 const ctx = {}

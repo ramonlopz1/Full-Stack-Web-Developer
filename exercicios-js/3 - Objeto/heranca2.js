@@ -14,7 +14,7 @@ const filho = {
 } //indica que o prototype do filho é o pai e recebe o attr3
 
 
-
+console.log(filho.attr1, filho.attr2, filho.attr3)
 
 console.log(filho.attr1) //busca no filho, depois no pai e por fim no avo
 

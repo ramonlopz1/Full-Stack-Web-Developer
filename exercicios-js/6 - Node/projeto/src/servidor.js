@@ -1,6 +1,3 @@
-// url faz a req
-// servidor retorna a res
-
 const porta = 3003 
 
 const express = require('express')
@@ -14,12 +11,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // retorna lista de produtos
 app.get('/produtos', (req, res, next) => { //passa o caminho e passa uma função middleware
-    res.send(bancoDeDados.getProdutos()) //retornar todos produtos
+    const produtos = bancoDeDados.getProdutos()
+    res.send(data) //retornar todos produtos
 })
 
 // retorna produto pelo ID
 app.get('/produtos/:id', (req, res, next) => {
-    res.send(bancoDeDados.getProduto(req.params.id)) // retorna produto com id passado no parâmetro do URL (na req)
+    const product = bancoDeDados.getProduto(req.params.id)
+    res.send(product)
 }) 
 
 // insere informações

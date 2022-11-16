@@ -9,6 +9,12 @@ String.prototype.reverse = function () {
     return this.split('').reverse().join('') //criação da função reverse: o split gera um array do valor passado na string
 }
 
+String.prototype.posOne = function () {
+    return this.split('')[0]
+}
+
+console.log("Ramon".posOne())
+
 console.log('Escola Cod3r'.reverse())
 
 //Adicionando função à um protype
