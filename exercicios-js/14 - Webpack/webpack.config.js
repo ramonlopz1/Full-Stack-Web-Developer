@@ -7,28 +7,18 @@ const TerserPlugin = require('terser-webpack-plugin')
 module.exports = {
 
     mode: modoDev ? 'development' : 'production',
-
     entry: './src/principal.js',
-
-
-
     output: {
         filename: 'principal.js',
         path: __dirname + '/public'
     },
-
-
-
-    
-
-
-
-    module: { //configura o css
+    // configura os loaders dos arquivos (css, sass, png, jpg etc...)
+    module: { 
         rules: [{
-            test: /\.s?[ac]ss$/,  // rejex: vai pesquisar arquivos css, sass ou scss
+            test: /\.s?[ac]ss$/,  // regex: vai pesquisar arquivos css, sass ou scss
             use: [
                 MiniCssExtractPlugin.loader,
-                // 'style-loader', // Adiciona CSS a DOM injetando a tag <style>
+                // 'style-loader', // Adiciona CSS via DOM (gera css através do js)
                 'css-loader', // Interpreta @import, url()...
                 'sass-loader',
             ]
@@ -39,9 +29,6 @@ module.exports = {
             ]
         }]
     },
-
-
-
     optimization: {
         minimizer: [
             new TerserPlugin({
@@ -50,19 +37,14 @@ module.exports = {
                     ecma: 6,
                 }
             }),
-            new MiniCssExtractPlugin()
+            new MiniCssExtractPlugin() 
         ]
     },
-
-
-
-
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "estilo.css" //nome do arquivo que será gerado a partir do import no arquivo principal.js
+            filename: "estilo.css" // Adiciona o css como arquivo no public (e n como js (como o style-loader faz))
         })
     ],
-
     devServer: {
         static: {
             directory: "./public"
@@ -70,5 +52,4 @@ module.exports = {
         compress: true,
         port: 9000
     },
-
 }

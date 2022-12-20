@@ -21,6 +21,7 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-uglify": "3.0.0",
     "gulp-uglifycss": "^1.1.0",
+    "json-server": "^0.17.1",
     "sass": "^1.44.0",
     "typescript": "2.8.3"
   }

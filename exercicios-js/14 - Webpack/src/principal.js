@@ -1,5 +1,5 @@
 import Pessoa from './pessoa'
-import './assets' //buscar o javascript dentro da pasta
+import './assets' //buscar os arquivos estáticos: css, jss, html
 
 const atendente = new Pessoa
 

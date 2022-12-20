@@ -6,7 +6,7 @@ const uglify = require('gulp-uglify')
 const concat = require('gulp-concat')
 const htmlmin = require('gulp-htmlmin')
 
-
+// transpile e minificação dos arquivos
 function appHTML() {
     return gulp.src('src/**/*.html')
         .pipe(htmlmin({ collapseWhitespace: true })) // t ira espaço em branco
@@ -35,7 +35,8 @@ function appIMG() {
         .pipe(gulp.dest('build/assets/imgs'))
 }
 
-gulp.task('appHTML', appHTML) //registra task no gulp
+//registra tasks no gulp
+gulp.task('appHTML', appHTML) 
 gulp.task('appCSS', appCSS)
 gulp.task('appJS', appJS)
 gulp.task('appIMG', appIMG)

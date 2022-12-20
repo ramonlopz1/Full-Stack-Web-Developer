@@ -25,8 +25,9 @@
     const alterarDestaque = () => $('#div1').toggleClass('destaque')
     $('#div1').on('mouseenter mouseleave', alterarDestaque)
     // $('#div1').hover(alterarDestaque, () => { console.log('oi')})
-
-    $('#div1').one('mouseenter', e => alert('Aviso Importante: chamado 1x'))  // chama a callback apenas 1x
+    
+    // chama a callback apenas 1x
+    $('#div1').one('mouseenter', e => alert('Aviso Importante: chamado 1x'))  
 
     $('#div1').dblclick(e => $('#div1').fadeOut(1000).fadeIn(1000)) //doubleclick
 

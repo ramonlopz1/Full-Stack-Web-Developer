@@ -28,7 +28,6 @@ const getTurma = letra => {
     })
 }
 
-
 Promise.all([getTurma('A'), getTurma('B'), getTurma('C')])
     .then(turmas => [].concat(...turmas)) // coloca os valores contidos em getTurma dentro de array
     .then(alunos => alunos.map(aluno => aluno.nome)) // cria array de alunos e insere o nome ded cada aluno
